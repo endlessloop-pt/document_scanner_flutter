@@ -77,23 +77,8 @@ dependencies:
       url: https://github.com/sanjeevinnobit/document_scanner_flutter.git
       ref: master
 ```
-Step 2: add this in /android/app/src/main/AndroidManifest
-```xml
-// some code here
-</activity>
 
-<provider
-    android:name="androidx.core.content.FileProvider" 
-    android:authorities="${applicationId}.provider"
-    android:exported="false"
-    android:grantUriPermissions="true">
-    <meta-data
-        android:name="android.support.FILE_PROVIDER_PATHS"
-        android:resource="@xml/provider_paths" />
-</provider>
-```
-
-Step 3: Update minSdkVersion in your /android/app/build.gradle
+Step 2: Update minSdkVersion in your /android/app/build.gradle
 ```gradle
 android {
     // some code here
