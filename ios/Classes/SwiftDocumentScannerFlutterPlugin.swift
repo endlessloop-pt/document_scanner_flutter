@@ -1,4 +1,4 @@
-import WeScan
+import ForkedWeScan
 import Flutter
 import UIKit
 
