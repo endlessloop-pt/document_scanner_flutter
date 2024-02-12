@@ -13,8 +13,9 @@ typedef Future<File?>? ScannerFilePicker();
 class PdfGeneratotGallery extends StatefulWidget {
   final ScannerFilePicker filePicker;
   final Map<dynamic, String> labelsConfig;
+  final Widget? leading;
 
-  const PdfGeneratotGallery(this.filePicker, this.labelsConfig);
+  const PdfGeneratotGallery(this.filePicker, this.labelsConfig, this.leading);
 
   @override
   _PdfGeneratotGalleryState createState() => _PdfGeneratotGalleryState();
@@ -99,23 +100,12 @@ class _PdfGeneratotGalleryState extends State<PdfGeneratotGallery> {
     return finalTitle.replaceAll(countHolder, "${files.length}");
   }
 
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
   @override
   Widget build(BuildContext context) {
     var appBar = AppBar(
       automaticallyImplyLeading: false,
-      leading: IconButton(
-        icon: ImageIcon(
-          AssetImage('images/arrow_left.png'),
-          key: const Key('back-btn'),
-          size: 24,
-          color: Colors.white,
-        ),
-        onPressed: () {
-          navigatorKey.currentState!.pop();
-        },
-      ),
+      leading: widget.leading,
+      centerTitle: true,
       title: Row(
         children: [
           if (files.isNotEmpty) Text(itemsTitle),

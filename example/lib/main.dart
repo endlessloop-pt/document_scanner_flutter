@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:document_scanner_flutter/document_scanner_flutter.dart';
-import 'package:document_scanner_flutter/configs/configs.dart';
-import 'package:flutter/material.dart';
 import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
+import 'package:document_scanner_flutter/configs/configs.dart';
+import 'package:document_scanner_flutter/document_scanner_flutter.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,6 +28,7 @@ class _MyAppState extends State<MyApp> {
         ScannerLabelsConfig.PDF_GALLERY_FILLED_TITLE_MULTIPLE:
             "Only {PAGES_COUNT} Page"
       },
+      leading: null,
       //source: ScannerFileSource.CAMERA
     );
     if (doc != null) {
