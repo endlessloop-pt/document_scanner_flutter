@@ -1,9 +1,10 @@
 import 'dart:io';
+
 import 'package:document_scanner_flutter/configs/configs.dart';
 import 'package:document_scanner_flutter/screens/photo_viewer.dart';
 import 'package:flutter/material.dart';
-import 'package:pdf/widgets.dart' as pw;
 import 'package:path_provider/path_provider.dart';
+import 'package:pdf/widgets.dart' as pw;
 
 /// @nodoc
 typedef Future<File?>? ScannerFilePicker();
@@ -98,10 +99,23 @@ class _PdfGeneratotGalleryState extends State<PdfGeneratotGallery> {
     return finalTitle.replaceAll(countHolder, "${files.length}");
   }
 
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
   @override
   Widget build(BuildContext context) {
     var appBar = AppBar(
       automaticallyImplyLeading: false,
+      leading: IconButton(
+        icon: ImageIcon(
+          AssetImage('images/arrow_left.png'),
+          key: const Key('back-btn'),
+          size: 24,
+          color: Colors.white,
+        ),
+        onPressed: () {
+          navigatorKey.currentState!.pop();
+        },
+      ),
       title: Row(
         children: [
           if (files.isNotEmpty) Text(itemsTitle),
