@@ -36,19 +36,23 @@ class DocumentScannerFlutter {
   ///
   /// `context` : BuildContext to attach PDF generation widgets
   /// `androidConfigs` : Android scanner labels configuration
-  static Future<File?> launchForPdf(BuildContext context,
+  static Future<File?> launchForPdf(
+      BuildContext context,
       {ScannerFileSource? source,
       Map<dynamic, String> labelsConfig = const {},
-      Widget? leading}) async {
+      Widget? leading,
+      Color? backgroundColor,}
+      ) async {
     Future<File?>? launchWrapper() {
-      return launch(context, labelsConfig: labelsConfig, source: source);
+      return launch(context, labelsConfig: labelsConfig, source: source,
+          backgroundColor: backgroundColor);
     }
 
     return await Navigator.push<File>(
         context,
         MaterialPageRoute(
             builder: (_) =>
-                PdfGeneratotGallery(launchWrapper, labelsConfig, leading)));
+                PdfGeneratotGallery(launchWrapper, labelsConfig, leading, backgroundColor)));
   }
 
   /// Scanner to get single scanned image
@@ -56,9 +60,12 @@ class DocumentScannerFlutter {
   /// `context` : BuildContext to attach source selection
   /// `source` : Either ScannerFileSource.CAMERA or ScannerFileSource.GALLERY
   /// `androidConfigs` : Android scanner labels configuration
+  /// `backgroundColor` : Background color of buttons
   static Future<File?>? launch(BuildContext context,
       {ScannerFileSource? source,
-      Map<dynamic, String> labelsConfig = const {}}) {
+      Map<dynamic, String> labelsConfig = const {},
+      Color? backgroundColor = Colors.white,}
+      ) {
     if (source != null) {
       return _scanDocument(source, labelsConfig);
     }

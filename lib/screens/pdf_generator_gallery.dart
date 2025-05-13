@@ -14,8 +14,9 @@ class PdfGeneratotGallery extends StatefulWidget {
   final ScannerFilePicker filePicker;
   final Map<dynamic, String> labelsConfig;
   final Widget? leading;
+  final Color? backgroundColor;
 
-  const PdfGeneratotGallery(this.filePicker, this.labelsConfig, this.leading);
+  const PdfGeneratotGallery(this.filePicker, this.labelsConfig, this.leading, this.backgroundColor);
 
   @override
   _PdfGeneratotGalleryState createState() => _PdfGeneratotGalleryState();
@@ -218,7 +219,7 @@ class _PdfGeneratotGalleryState extends State<PdfGeneratotGallery> {
                   Expanded(
                       child: _mainControl(context,
                           color:
-                              files.isEmpty ? Colors.blue : Colors.cyanAccent,
+                              files.isEmpty ? Colors.blue : widget.backgroundColor ?? Colors.blue,
                           icon: Icons.add_a_photo,
                           textColor:
                               files.isEmpty ? Colors.white : Colors.black,
