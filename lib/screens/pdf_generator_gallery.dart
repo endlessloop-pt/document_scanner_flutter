@@ -199,14 +199,14 @@ class _PdfGeneratotGalleryState extends State<PdfGeneratotGallery> {
                     color: Colors.black.withOpacity(.2),
                     spreadRadius: 1,
                     blurRadius: 10)
-              ], borderRadius: BorderRadius.circular(25)),
+              ], borderRadius: BorderRadius.circular(4)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   if (files.isNotEmpty)
                     Expanded(
                         child: _mainControl(context,
-                            color: Colors.blue,
+                            color: widget.backgroundColor?.withOpacity(0.1) ?? Colors.blue,
                             icon: Icons.check,
                             title: widget.labelsConfig[ScannerLabelsConfig
                                     .PDF_GALLERY_DONE_LABEL] ??
@@ -214,24 +214,24 @@ class _PdfGeneratotGalleryState extends State<PdfGeneratotGallery> {
                             textColor: Colors.white,
                             onTap: onDone,
                             radius: BorderRadius.only(
-                                topLeft: Radius.circular(25),
-                                bottomLeft: Radius.circular(25)))),
+                                topLeft: Radius.circular(4),
+                                bottomLeft: Radius.circular(4)))),
                   Expanded(
                       child: _mainControl(context,
                           color:
                               files.isEmpty ? Colors.blue : widget.backgroundColor ?? Colors.blue,
                           icon: Icons.add_a_photo,
                           textColor:
-                              files.isEmpty ? Colors.white : Colors.black,
+                              files.isEmpty ? Colors.white : Colors.grey,
                           title: widget.labelsConfig[ScannerLabelsConfig
                                   .PDF_GALLERY_ADD_IMAGE_LABEL] ??
                               "Add Image",
                           onTap: addImage,
                           radius: files.isEmpty
-                              ? BorderRadius.circular(25)
+                              ? BorderRadius.circular(4)
                               : BorderRadius.only(
-                                  topRight: Radius.circular(25),
-                                  bottomRight: Radius.circular(25)))),
+                                  topRight: Radius.circular(4),
+                                  bottomRight: Radius.circular(4)))),
                 ],
               ),
             ),
