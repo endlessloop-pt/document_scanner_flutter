@@ -213,13 +213,11 @@ class _PdfGeneratotGalleryState extends State<PdfGeneratotGallery> {
                                 "Done",
                             textColor: Colors.white,
                             onTap: onDone,
-                            radius: BorderRadius.only(
-                                topLeft: Radius.circular(4),
-                                bottomLeft: Radius.circular(4)))),
+                            radius: BorderRadius.all(Radius.circular(4)))),
                   Expanded(
                       child: _mainControl(context,
                           color:
-                              files.isEmpty ? Colors.blue : widget.backgroundColor ?? Colors.blue,
+                              files.isEmpty ? widget.backgroundColor?.withOpacity(0.4) ?? Colors.blue : widget.backgroundColor ?? Colors.blue,
                           icon: Icons.add_a_photo,
                           textColor:
                               files.isEmpty ? Colors.white : Colors.grey,
@@ -229,9 +227,7 @@ class _PdfGeneratotGalleryState extends State<PdfGeneratotGallery> {
                           onTap: addImage,
                           radius: files.isEmpty
                               ? BorderRadius.circular(4)
-                              : BorderRadius.only(
-                                  topRight: Radius.circular(4),
-                                  bottomRight: Radius.circular(4)))),
+                              : BorderRadius.all(Radius.circular(4)))),
                 ],
               ),
             ),
