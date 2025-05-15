@@ -199,7 +199,8 @@ class _PdfGeneratotGalleryState extends State<PdfGeneratotGallery> {
                     color: Colors.black.withOpacity(.2),
                     spreadRadius: 1,
                     blurRadius: 10)
-              ], borderRadius: BorderRadius.circular(4)),
+              ],
+              borderRadius: BorderRadius.circular(4)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -213,21 +214,23 @@ class _PdfGeneratotGalleryState extends State<PdfGeneratotGallery> {
                                 "Done",
                             textColor: Colors.white,
                             onTap: onDone,
-                            radius: BorderRadius.all(Radius.circular(4)))),
+                            radius: BorderRadius.only(
+                                bottomRight: Radius.circular(4),
+                                topRight: Radius.circular(4)))),
                   Expanded(
                       child: _mainControl(context,
                           color:
                               files.isEmpty ? widget.backgroundColor?.withOpacity(0.4) ?? Colors.blue : widget.backgroundColor ?? Colors.blue,
                           icon: Icons.add_a_photo,
                           textColor:
-                              files.isEmpty ? Colors.white : Colors.grey,
+                              files.isEmpty ? Colors.white : Colors.grey.shade200,
                           title: widget.labelsConfig[ScannerLabelsConfig
                                   .PDF_GALLERY_ADD_IMAGE_LABEL] ??
                               "Add Image",
                           onTap: addImage,
-                          radius: files.isEmpty
-                              ? BorderRadius.circular(4)
-                              : BorderRadius.all(Radius.circular(4)))),
+                          radius: BorderRadius.only(
+                              bottomLeft: Radius.circular(4),
+                              topLeft: Radius.circular(4)))),
                 ],
               ),
             ),
