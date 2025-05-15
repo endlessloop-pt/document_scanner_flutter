@@ -204,23 +204,29 @@ class _PdfGeneratotGalleryState extends State<PdfGeneratotGallery> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (files.isNotEmpty)
+                  if (files.isNotEmpty)...[
                     Expanded(
                         child: _mainControl(context,
-                            color: widget.backgroundColor?.withOpacity(0.1) ?? Colors.blue,
+                            color: widget.backgroundColor ?? Colors.blue,
                             icon: Icons.check,
                             title: widget.labelsConfig[ScannerLabelsConfig
-                                    .PDF_GALLERY_DONE_LABEL] ??
+                                .PDF_GALLERY_DONE_LABEL] ??
                                 "Done",
                             textColor: Colors.white,
                             onTap: onDone,
-                            radius: BorderRadius.only(
-                                bottomRight: Radius.circular(4),
-                                topRight: Radius.circular(4)))),
+                            radius: BorderRadius.all(
+                                Radius.circular(4)
+                            )
+                        )
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                  ],
                   Expanded(
                       child: _mainControl(context,
                           color:
-                              files.isEmpty ? widget.backgroundColor?.withOpacity(0.4) ?? Colors.blue : widget.backgroundColor ?? Colors.blue,
+                              files.isEmpty ? widget.backgroundColor ?? Colors.blue : widget.backgroundColor ?? Colors.blue,
                           icon: Icons.add_a_photo,
                           textColor:
                               files.isEmpty ? Colors.white : Colors.grey.shade200,
@@ -228,9 +234,11 @@ class _PdfGeneratotGalleryState extends State<PdfGeneratotGallery> {
                                   .PDF_GALLERY_ADD_IMAGE_LABEL] ??
                               "Add Image",
                           onTap: addImage,
-                          radius: BorderRadius.only(
-                              bottomLeft: Radius.circular(4),
-                              topLeft: Radius.circular(4)))),
+                          radius: BorderRadius.all(
+                              Radius.circular(4)
+                          )
+                      )
+                  ),
                 ],
               ),
             ),
